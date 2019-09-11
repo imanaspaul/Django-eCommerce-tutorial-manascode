@@ -1,0 +1,34 @@
+{% extends 'products/base.html' %}
+
+
+{% block content %}
+
+  <div class="container my-5">
+  	<h2 class="my-5">Featured Products</h2>
+    <div class="row">
+      {% for product in object_list %}
+		  <div class="col-md-6 col-sm-12 col-lg-3">
+			<figure class="card card-product">
+				<div class="img-wrap"> 
+					<img src="media/{{ product.mainimage }}" style="width: 100%; height: 300px;">
+				</div>
+				<figcaption class="info-wrap">
+					<h6 class="title text-dots"><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h6>
+					
+					<div class="action-wrap">
+						<!-- <a href="cart/{{ product.slug }}" class="btn btn-primary btn-sm"> Add to Cart </a>
+            			<a href="cart/" class="btn btn-primary btn-sm"> View Cart </a> -->
+<!--             <a href="remove/{{ product.slug }}" class="btn btn-danger btn-sm"> Remove</a>
+ -->						<!-- price-wrap.// -->
+						 <div class="price-wrap h5">
+							<span class="price-new">${{product.price}}</span>
+							<del class="price-old">$1980</del>
+						</div> 
+					</div> <!-- action-wrap -->
+				</figcaption>
+			</figure> <!-- card // -->
+		</div> <!-- col // -->
+      {% endfor %}
+  </div>
+  </div>
+{% endblock %}
