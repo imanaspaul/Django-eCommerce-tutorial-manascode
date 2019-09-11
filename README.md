@@ -1,0 +1,1 @@
+"# Django-eCommerce-tutorial-manascode" 
