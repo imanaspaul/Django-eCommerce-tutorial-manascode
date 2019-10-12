@@ -1,0 +1,52 @@
+{% extends 'products/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container mt-5">
+  <h2 class="mb-3">Shipping Address > <span class="text-muted">Checkout</span></h2>
+  <div class="row">
+    <div class="col-md-9">
+     <div class="card mb-5" style="height: auto">
+       <div class="card-body">
+          <form method="POST">
+          {% csrf_token %}
+
+         {{ form | crispy}}
+          <button type="submit" class="btn btn-primary float-right">Next</button>
+          </form>
+       </div>
+     </div>
+      {% if savedAddress %}
+      <h4>Saved Address</h4>
+      <div class="card mb-5" style="height: auto">
+        <div class="card-body">
+          <p><b>Address :</b> {{ savedAddress.address }}</p>
+          <p><b>City :</b> {{ savedAddress.city }}</p>
+          <p><b>Zipcode :</b> {{ savedAddress.zipcode }}</p>
+          <p><b>Landmark :</b> {{ savedAddress.landmark }}</p>
+        </div>
+        <div class="card-body">
+           <a href="{% url 'checkout:payment' %}" class="btn btn-primary float-right">Proceed to Checkout with the saved Address</a>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    <div class="col-md-3">
+      <div class="card" style="height: auto">
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            {% for item in order_items %}
+            <li class="list-group-item">{{ item.item.name }} x {{ item.quantity }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+           <div class="card-footer">
+            <span class="float-left"><b>Order Total</b></span>
+            <span class="float-right"><b>$ {{ order_total | floatformat:2 }}</b></span>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

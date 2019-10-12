@@ -11,6 +11,7 @@ class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
+    purchased = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
 
 
@@ -28,7 +29,9 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     ordered = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
-
+    paymentId = models.CharField(max_length=200, blank=True , null=True)
+    orderId = models.CharField(max_length=200, blank=True, null=True)
+    
     def __str__(self):
         return self.user.username
 

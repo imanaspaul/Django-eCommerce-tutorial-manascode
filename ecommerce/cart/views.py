@@ -79,15 +79,19 @@ def CartView(request):
 
     user = request.user
 
-    carts = Cart.objects.filter(user=user)
+    carts = Cart.objects.filter(user=user, purchased=False)
     orders = Order.objects.filter(user=user, ordered=False)
 
     if carts.exists():
-        order = orders[0]
-        return render(request, 'cart/home.html', {"carts": carts, 'order': order})
+        if orders.exists():
+            order = orders[0]
+            return render(request, 'cart/home.html', {"carts": carts, 'order': order})
+        else:
+            messages.warning(request, "You do not have any item in your Cart")
+            return redirect("mainapp:home")
 		
     else:
-        messages.warning(request, "You do not have an active order")
+        messages.warning(request, "You do not have any item in your Cart")
         return redirect("mainapp:home")
 
 

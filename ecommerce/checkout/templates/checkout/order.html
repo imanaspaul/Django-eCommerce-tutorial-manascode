@@ -1,0 +1,48 @@
+{% extends 'products/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container mt-5">
+<h2 class="text-center"><strong>Your Ordes</strong></h2>
+<div class="row">
+	<div class="col-md-12">
+		<div class="card mt-5" style="height: auto">
+			<div class="table-responsive">
+			<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col">Order Id</th>
+			      <th scope="col">Products</th>
+			      <th scope="col">Status</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    
+			    
+			    {% for order in orders %}
+			    <tr>
+			      <th scope="row">{{ forloop.counter }}</th>
+			      <td><a href="#">{{ order.orderId }}</a></td>
+			      <td>
+			      	{% for item in order.orderitems.all %}
+			      		{{ item }}
+			      		<br>
+			      	{% endfor %}
+			      </td>
+			      <td><span class="badge badge-primary">Processing Your Order</span></td>
+			  	</tr>
+			      {% endfor %}
+			    
+			  </tbody>
+			</table>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12 my-5 text-center">
+		<a href="/" class="btn btn-success">Back to Home</a>
+	</div>
+</div>
+</div>
+
+{% endblock %}
