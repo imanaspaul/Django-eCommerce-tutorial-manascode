@@ -146,5 +146,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Stripe API keys
 
-STRIPE_SECRET_KEY = 'sk_test_UbrB3Vq24ky5fhH9jRGGnjAO00gvQJKy0J'
+STRIPE_SECRET_KEY = 'Your Secret Key'
 STRIPE_PUBLISHABLE_KEY = 'pk_test_oNcsErgFz6Ewv7JCbD9Mbn2700E7FWZotV'
