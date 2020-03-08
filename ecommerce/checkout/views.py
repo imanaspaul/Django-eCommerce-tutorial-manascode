@@ -1,5 +1,4 @@
 import stripe
-import uuid
 from django.utils.crypto import get_random_string
 from django.conf import settings
 from django.contrib import messages
@@ -69,10 +68,10 @@ def charge(request):
 	order = Order.objects.get(user=request.user, ordered=False)
 	orderitems = order.orderitems.all()
 	order_total = order.get_totals() 
-	totalCents = int(float(order_total * 100));
+	totalCents = int(float(order_total * 100))
 	if request.method == 'POST':
 		charge = stripe.Charge.create(amount=totalCents,
-            currency='usd',
+            currency='inr',
             description=order,
             source=request.POST['stripeToken'])
 		print(charge)

@@ -9,6 +9,9 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural = "Categories"
+
 #Product Model
 class  Product(models.Model):
     mainimage = models.ImageField(upload_to='products/', blank=True)

@@ -11,16 +11,18 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
+load_dotenv(verbose=True)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'a%zlhr+b0mze-t5dxt%p1g=0a8-^njg#0o*@$gvp98%w=5op5u'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -146,5 +148,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Stripe API keys
 
-STRIPE_SECRET_KEY = 'sk_test_UbrB3Vq24ky5fhH9jRGGnjAO00gvQJKy0J'
-STRIPE_PUBLISHABLE_KEY = 'pk_test_oNcsErgFz6Ewv7JCbD9Mbn2700E7FWZotV'
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
+STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_PUBLISHABLE_KEY")
