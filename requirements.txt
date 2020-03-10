@@ -3,10 +3,10 @@ certifi==2019.6.16
 chardet==3.0.4
 defusedxml==0.6.0
 django-allauth==0.40.0
-django==2.2.5
+django>=2.2.10
 idna==2.8
 oauthlib==3.1.0
-pillow==6.1.0
+pillow>=6.1.0
 python3-openid==3.1.0
 pytz==2019.2
 requests-oauthlib==1.2.0
