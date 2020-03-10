@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'checkout',
     'products',
     'crispy_forms',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
