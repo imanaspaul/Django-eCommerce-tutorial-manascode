@@ -3,13 +3,15 @@ from rest_framework.routers import SimpleRouter
 from cart.views import add_to_cart, remove_from_cart, CartView, decreaseCart
 from . views import home, ProductDetail, Home
 from products.api.views import *
+from cart.api.views import *
 
-app_name= 'mainapp'
+app_name = 'mainapp'
 
 router = SimpleRouter()
 router.register('api/products', ProductAPIView)
 router.register('api/category', CategoryAPIView)
-
+router.register('api/cart', CartAPIView)
+router.register('api/order', OrderAPIView)
 
 urlpatterns = [
     # path('', Home.as_view(), name='home'),
