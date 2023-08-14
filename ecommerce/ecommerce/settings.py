@@ -39,8 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-   
+
     'django.contrib.sites',
+
+    'rest_framework',
+    'drf_spectacular',
 
     'allauth',
     'allauth.account',
@@ -72,7 +75,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',   
+                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -83,7 +86,7 @@ TEMPLATES = [
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
-    
+
 )
 
 WSGI_APPLICATION = 'ecommerce.wsgi.application'
@@ -145,7 +148,18 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-    
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+
+# SWAGGER
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'E-Commerce API',
+    'VERSION': '1.0.0',
+}
+
 
 # Stripe API keys
 
