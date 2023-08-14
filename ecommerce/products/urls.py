@@ -1,10 +1,19 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import SimpleRouter
 from cart.views import add_to_cart, remove_from_cart, CartView, decreaseCart
 from . views import home, ProductDetail, Home
+from products.api.views import *
+
 app_name= 'mainapp'
+
+router = SimpleRouter()
+router.register('api/products', ProductAPIView)
+router.register('api/category', CategoryAPIView)
+
 
 urlpatterns = [
     # path('', Home.as_view(), name='home'),
+    path('', include(router.urls)),
     path('', home, name='home'),
     path('p', Home.as_view(), name='home'),
     path('product/<slug>/', ProductDetail.as_view(), name='product'),
