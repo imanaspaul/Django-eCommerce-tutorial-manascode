@@ -14,7 +14,6 @@ class Cart(models.Model):
     purchased = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
 
-
     def __str__(self):
         return f'{self.quantity} of {self.item.name}'
 
@@ -24,21 +23,22 @@ class Cart(models.Model):
         return floattotal
 
 # Order Model
+
+
 class Order(models.Model):
-    orderitems  = models.ManyToManyField(Cart)
+    orderitems = models.ManyToManyField(Cart)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     ordered = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
-    paymentId = models.CharField(max_length=200, blank=True , null=True)
+    paymentId = models.CharField(max_length=200, blank=True, null=True)
     orderId = models.CharField(max_length=200, blank=True, null=True)
-    
+
     def __str__(self):
         return self.user.username
-
 
     def get_totals(self):
         total = 0
         for order_item in self.orderitems.all():
             total += order_item.get_total()
-        
+
         return total
