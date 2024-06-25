@@ -1,34 +1,45 @@
-# Django-eCommerce-tutorial-manascode 
+# 🛍️ Django e-сommerce tutorial manascode
 
+Django e-commerce tutorial for beginners.
 
-Steps to get started
+[Follow the tutorials to learn more.](https://manascode.com)
 
-1. Step one :
-```
+## 🏗 Get started
+
+1. Clone the repository:
+
+```bash
 git clone https://github.com/imanaspaul/Django-eCommerce-tutorial-manascode.git
-
 ```
-[Follow the tutorials to learn more](http://manascode.com)
 
-2. Step two :
+2. Create virtual enviroment:
 
-```
+```bash
 virtualenv env
-
+source env/bin/activate # for Linux
+.\env_name\Scripts\activate # for Windows
 ```
-Now install all the dependencies
 
-```
+3. Install all the dependencies:
+
+```bash
 pip install -r requirements.txt
 ```
-3 Step three :
-Change directory to ecommerce 
 
-```
+4. Change directory to `ecommerce`:
+
+```bash
 cd ecommerce
 ```
-4. Step four :
-Now you can run the server 
+
+5. Run migrations:
+
+```bash
+py manage.py migrate
 ```
+
+6. Run the server:
+
+```bash
 py manage.py runserver
 ```
